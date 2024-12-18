@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "funcionarios", schema = "constituciones")
 @Data
@@ -25,6 +27,8 @@ public class FuncionarioEntity {
     private String apellidos;
     @Column(name = "CORREO")
     private String correo;
+    @Column(name = "ACTIVO")
+    private Integer activo;
     @Column(name = "FECHA_CREACION")
-    private String fechaCreacion;
+    private Date fechaCreacion;
 }

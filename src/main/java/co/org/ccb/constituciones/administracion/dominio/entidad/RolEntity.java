@@ -1,10 +1,13 @@
 package co.org.ccb.constituciones.administracion.dominio.entidad;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "roles", schema = "constituciones")
@@ -24,5 +27,6 @@ public class RolEntity {
     @Column(name = "ACTIVO")
     private Integer activo;
     @Column(name = "FECHA_CREACION")
-    private Integer fechaCreacion;
+    @JsonIgnore
+    private Date fechaCreacion;
 }

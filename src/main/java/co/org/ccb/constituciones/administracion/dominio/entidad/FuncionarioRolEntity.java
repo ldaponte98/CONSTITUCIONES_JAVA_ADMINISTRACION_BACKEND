@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class FuncionarioRolEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_funcionario_rol")
+    @Column(name = "id")
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)

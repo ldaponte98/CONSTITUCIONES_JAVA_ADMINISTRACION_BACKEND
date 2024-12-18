@@ -30,5 +30,9 @@ logging:
         web:
           filter: DEBUG
 client:
-  transversal: http://localhost:8085/transversal/v1
-  transversal-key-anonymous: 1HwyCOpBv45tpC5H
+  directorio-activo:
+    url: https://4gxis56zai.execute-api.us-east-1.amazonaws.com/prd1/mauc/ldap/oauth/token
+    access-key: dGVzdGp3dGNsaWVudGlkOlhZN2ttem9OemwxMDA=
+  transversal:
+    url: http://localhost:8085/transversal/v1
+    access-key: 1HwyCOpBv45tpC5H

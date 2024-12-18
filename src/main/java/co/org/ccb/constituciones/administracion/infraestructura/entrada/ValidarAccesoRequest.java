@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class ValidarAccesoRequest {
     private String usuario;
     private String clave;
+    private String rol;
 }

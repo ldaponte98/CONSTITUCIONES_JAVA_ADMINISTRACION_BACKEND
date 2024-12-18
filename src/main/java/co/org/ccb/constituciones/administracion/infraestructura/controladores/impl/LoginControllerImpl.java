@@ -27,7 +27,6 @@ public class LoginControllerImpl implements LoginController {
         UtilidadesApi.session = UsuarioSesion.builder()
                 .service(http.getRequestURI())
                 .build();
-        var respuesta = UtilidadesAplicacion.responder("OK", validarAccesoService.validar(request));
-        return ResponseEntity.ok(respuesta);
+        return ResponseEntity.ok(validarAccesoService.validar(request));
     }
 }

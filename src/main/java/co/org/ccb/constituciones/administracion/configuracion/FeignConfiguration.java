@@ -11,8 +11,13 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class FeignConfiguration {
-    @Value("${client.transversal-key-anonymous}")
-    private String claveRutaAnonima;
+    @Value("${client.transversal.access-key}")
+    private String transversalAccessKey;
+    @Value("${client.directorio-activo.access-key}")
+    private String directorioActivoAccessKey;
+
+    @Value("${client.directorio-activo.url}")
+    private String urlDirectorioActivo;
     @Bean
     Logger.Level feignLoggerLevel() {
         return Logger.Level.FULL;
@@ -21,12 +26,17 @@ public class FeignConfiguration {
     public RequestInterceptor requestInterceptor() {
         return requestTemplate -> {
             // Aquí puedes agregar headers comunes
-            if(UtilidadesApi.session != null && !Strings.isEmpty(UtilidadesApi.session.getToken())) {
-                requestTemplate.header("Authorization", "Bearer " + UtilidadesApi.session.getToken());
+            if(requestTemplate.feignTarget().url().equals(urlDirectorioActivo)) {
+                requestTemplate.header("Authorization", "Basic " + directorioActivoAccessKey);
+                requestTemplate.header("Content-Type", "application/x-www-form-urlencoded");
             }else {
-                requestTemplate.header("access-key", claveRutaAnonima);
+                if(UtilidadesApi.session != null && !Strings.isEmpty(UtilidadesApi.session.getToken())) {
+                    requestTemplate.header("Authorization", "Bearer " + UtilidadesApi.session.getToken());
+                }else {
+                    requestTemplate.header("access-key", transversalAccessKey);
+                }
+                requestTemplate.header("Content-Type", "application/json");
             }
-            requestTemplate.header("Content-Type", "application/json");
         };
     }
 }
