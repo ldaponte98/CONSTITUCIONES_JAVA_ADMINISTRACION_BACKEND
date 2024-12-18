@@ -15,13 +15,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class PruebaControllerImplTest {
+class LoginControllerImplTest {
 
     @Mock
     private LogService logService;
 
     @InjectMocks
-    private PruebaControllerImpl pruebaController;
+    private LoginControllerImpl pruebaController;
 
     private PruebaRequest pruebaRequest;
 

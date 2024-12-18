@@ -15,6 +15,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(validarAutenticacionInterceptor)
                 .addPathPatterns("/**")   // Aplicar a todas las rutas
-                .excludePathPatterns("/v3/api-docs/**", "/swagger-ui/**"); // Excluir rutas públicas
+                .excludePathPatterns("/v3/api-docs/**", "/swagger-ui/**", "/v1/login"); // Excluir rutas públicas
     }
 }
